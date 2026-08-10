@@ -100,6 +100,7 @@ export const he: Dictionary = {
       "אתר זה מחויב לעמידה בתקן נגישות (ת״י 5568)",
     rights: "כל הזכויות שמורות",
     socialLabel: "רשתות חברתיות",
+    madeBy: "האתר נבנה על ידי",
   },
   accessibility: {
     openPanel: "פתיחת תפריט נגישות",

@@ -100,6 +100,7 @@ export const en: Dictionary = {
       "This site is committed to accessibility compliance (IS 5568)",
     rights: "All rights reserved",
     socialLabel: "Social media",
+    madeBy: "Website by",
   },
   accessibility: {
     openPanel: "Open accessibility menu",

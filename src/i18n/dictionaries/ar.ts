@@ -100,6 +100,7 @@ export const ar: Dictionary = {
       "يلتزم هذا الموقع بمعايير إمكانية الوصول (المعيار IS 5568)",
     rights: "جميع الحقوق محفوظة",
     socialLabel: "وسائل التواصل",
+    madeBy: "الموقع من تصميم",
   },
   accessibility: {
     openPanel: "فتح قائمة إمكانية الوصول",

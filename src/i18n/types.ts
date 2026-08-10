@@ -70,6 +70,7 @@ export interface FooterCopy {
   accessibility: string;
   rights: string;
   socialLabel: string;
+  madeBy: string;
 }
 
 export interface AccessibilityCopy {

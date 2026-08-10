@@ -75,6 +75,17 @@ export function Footer() {
         <p className="mt-10 border-t border-gold/10 pt-6 text-center text-xs text-cream/45">
           {t.footer.accessibility}
         </p>
+        <p className="mt-3 text-center text-[11px] text-cream/30">
+          {t.footer.madeBy}{" "}
+          <a
+            href="https://demadigitalsolutions.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cream/40 underline-offset-2 transition-colors hover:text-gold/70 hover:underline"
+          >
+            Dema Digital Solutions
+          </a>
+        </p>
       </div>
     </footer>
   );
