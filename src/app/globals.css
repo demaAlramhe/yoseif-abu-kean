@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #0c1c43;
+  --color-gold: #c8a951;
+  --color-cream: #f8f7f4;
+  --font-size-scale: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-reduce-motion="false"]) *,
+  html:not([data-reduce-motion="false"]) *::before,
+  html:not([data-reduce-motion="false"]) *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-high-contrast="true"] {
+  filter: contrast(1.35);
+}
+
+html[data-grayscale="true"] {
+  filter: grayscale(1);
+}
+
+html[data-high-contrast="true"][data-grayscale="true"] {
+  filter: contrast(1.35) grayscale(1);
+}
+
+html[data-underline-links="true"] a {
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+}
+
+html[data-readable-font="true"] body,
+html[data-readable-font="true"] button,
+html[data-readable-font="true"] input,
+html[data-readable-font="true"] textarea {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+body {
+  font-size: calc(1rem * var(--font-size-scale));
+  background-color: var(--color-navy);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#main-content {
+  text-align: center;
+}
+
+#main-content label,
+#main-content input,
+#main-content textarea {
+  text-align: center;
+}
+
+@layer components {
+  .section-padding {
+    @apply px-5 py-16 sm:px-8 md:px-12 lg:px-16 lg:py-24;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-6xl;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-gold px-6 py-3 text-sm font-semibold text-navy transition-all duration-300 hover:bg-gold-light hover:shadow-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-gold/60 bg-transparent px-6 py-3 text-sm font-semibold text-cream transition-all duration-300 hover:border-gold hover:bg-gold/10 hover:shadow-gold-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold;
+  }
+
+  .gold-ring {
+    @apply rounded-full border border-gold/70 ring-1 ring-gold/30;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Arabic display metrics — Cairo needs explicit LH; class alone can lose to font defaults */
+html[lang="ar"] .hero-headline,
+[lang="ar"] .hero-headline {
+  line-height: 1.6 !important;
+}

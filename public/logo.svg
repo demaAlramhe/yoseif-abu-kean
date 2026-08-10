@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Al-Yosef Global placeholder logo">
+  <rect width="512" height="512" rx="256" fill="#0c1c43"/>
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#c8a951" stroke-width="12"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#c8a951" stroke-width="2" opacity="0.45"/>
+  <text x="256" y="278" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="96" font-weight="700" fill="#c8a951">AY</text>
+</svg>
