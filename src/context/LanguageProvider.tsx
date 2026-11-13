@@ -32,40 +32,56 @@ function isLocale(value: string | null): value is Locale {
   return value === "he" || value === "ar" || value === "en";
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+export function LanguageProvider({
+  children,
+  lockLocale,
+}: {
+  children: ReactNode;
+  /** Keep this subtree on one locale and do not read or write the stored preference. */
+  lockLocale?: Locale;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(lockLocale ?? DEFAULT_LOCALE);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    if (lockLocale) {
+      setHydrated(true);
+      return;
+    }
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (isLocale(stored)) {
       setLocaleState(stored);
     }
     setHydrated(true);
-  }, []);
+  }, [lockLocale]);
 
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
-  }, []);
+  const setLocale = useCallback(
+    (next: Locale) => {
+      if (lockLocale) return;
+      setLocaleState(next);
+      window.localStorage.setItem(STORAGE_KEY, next);
+    },
+    [lockLocale],
+  );
 
-  const dir = getDirection(locale);
-  const t = dictionaries[locale];
+  const activeLocale = lockLocale ?? locale;
+  const dir = getDirection(activeLocale);
+  const t = dictionaries[activeLocale];
 
   useEffect(() => {
     if (!hydrated) return;
-    document.documentElement.lang = locale;
+    document.documentElement.lang = activeLocale;
     document.documentElement.dir = dir;
-  }, [locale, dir, hydrated]);
+  }, [activeLocale, dir, hydrated]);
 
   const value = useMemo(
     () => ({
-      locale,
+      locale: activeLocale,
       dir,
       t,
       setLocale,
     }),
-    [locale, dir, t, setLocale],
+    [activeLocale, dir, t, setLocale],
   );
 
   return (

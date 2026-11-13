@@ -25,11 +25,13 @@ export const CONTACT = {
   },
 } as const;
 
+export const SITE_URL = "https://al-yosefglobal.com";
+
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: CONTACT.company,
-  url: "https://al-yosefglobal.com",
+  url: SITE_URL,
   email: CONTACT.email,
   telephone: [CONTACT.landlineIntl, CONTACT.mobileIntl],
   address: {
