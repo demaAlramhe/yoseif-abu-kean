@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Assistant, Cairo } from "next/font/google";
+import { organizationJsonLd } from "@/lib/siteConfig";
 import "./globals.css";
+
+const jsonLd = JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c");
 
 const display = Libre_Baskerville({
   subsets: ["latin"],
@@ -44,6 +47,9 @@ export default function RootLayout({
       className={`${display.variable} ${hebrew.variable} ${arabic.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

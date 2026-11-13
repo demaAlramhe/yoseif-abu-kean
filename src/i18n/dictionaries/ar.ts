@@ -81,8 +81,6 @@ export const ar: Dictionary = {
     title: "تواصل معنا",
     company: "Al-Yosef Global Ltd",
     address: "الكايموت 3، مجمع عيدان هنيغيف الصناعي – إسرائيل",
-    phone: "052-936-7090",
-    email: "info@al-yosefglobal.com",
     form: {
       name: "الاسم الكامل",
       phone: "الهاتف",
@@ -93,6 +91,8 @@ export const ar: Dictionary = {
       validation: "يرجى تعبئة الاسم والرسالة، ورقم الهاتف أو البريد الإلكتروني على الأقل.",
     },
     whatsappGreeting: "مرحبًا، أود تنسيق مكالمة مع Al-Yosef Global Ltd.",
+    whatsappOrder: "مرحبا، أنا مهتم بطلب بالجملة",
+    whatsappOrderLabel: "واتساب — طلب جملة",
     mapLabel: "خريطة الموقع",
   },
   footer: {
@@ -100,6 +100,7 @@ export const ar: Dictionary = {
       "يلتزم هذا الموقع بمعايير إمكانية الوصول (المعيار IS 5568)",
     rights: "جميع الحقوق محفوظة",
     socialLabel: "وسائل التواصل",
+    brandLine: "علامتنا: VEVIA",
     madeBy: "الموقع من تصميم",
   },
   accessibility: {

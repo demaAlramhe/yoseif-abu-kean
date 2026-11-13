@@ -81,8 +81,6 @@ export const en: Dictionary = {
     title: "Contact Us",
     company: "Al-Yosef Global Ltd",
     address: "HaKaymot 3, Idan HaNegev Industrial Park – Israel",
-    phone: "052-936-7090",
-    email: "info@al-yosefglobal.com",
     form: {
       name: "Full name",
       phone: "Phone",
@@ -93,6 +91,8 @@ export const en: Dictionary = {
       validation: "Please fill in name, message, and at least phone or email.",
     },
     whatsappGreeting: "Hello, I'd like to schedule a call with Al-Yosef Global Ltd.",
+    whatsappOrder: "Hello, I'm interested in a wholesale order",
+    whatsappOrderLabel: "WhatsApp — wholesale order",
     mapLabel: "Location map",
   },
   footer: {
@@ -100,6 +100,7 @@ export const en: Dictionary = {
       "This site is committed to accessibility compliance (IS 5568)",
     rights: "All rights reserved",
     socialLabel: "Social media",
+    brandLine: "Our brand: VEVIA",
     madeBy: "Website by",
   },
   accessibility: {

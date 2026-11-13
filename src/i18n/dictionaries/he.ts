@@ -81,8 +81,6 @@ export const he: Dictionary = {
     title: "צור קשר",
     company: "Al-Yosef Global Ltd",
     address: "הקיימות 3, פארק עידן הנגב, ישראל",
-    phone: "052-936-7090",
-    email: "info@al-yosefglobal.com",
     form: {
       name: "שם מלא",
       phone: "טלפון",
@@ -93,6 +91,8 @@ export const he: Dictionary = {
       validation: "נא למלא שם, הודעה, ולפחות טלפון או אימייל.",
     },
     whatsappGreeting: "שלום, אשמח לתאם שיחה עם Al-Yosef Global Ltd.",
+    whatsappOrder: "שלום, אני מעוניין בהזמנה סיטונאית",
+    whatsappOrderLabel: "וואטסאפ — הזמנה סיטונאית",
     mapLabel: "מפת הגעה",
   },
   footer: {
@@ -100,6 +100,7 @@ export const he: Dictionary = {
       "אתר זה מחויב לעמידה בתקן נגישות (ת״י 5568)",
     rights: "כל הזכויות שמורות",
     socialLabel: "רשתות חברתיות",
+    brandLine: "המותג שלנו: VEVIA",
     madeBy: "האתר נבנה על ידי",
   },
   accessibility: {

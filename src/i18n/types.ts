@@ -51,8 +51,6 @@ export interface ContactCopy {
   title: string;
   company: string;
   address: string;
-  phone: string;
-  email: string;
   form: {
     name: string;
     phone: string;
@@ -63,6 +61,8 @@ export interface ContactCopy {
     validation: string;
   };
   whatsappGreeting: string;
+  whatsappOrder: string;
+  whatsappOrderLabel: string;
   mapLabel: string;
 }
 
@@ -70,6 +70,7 @@ export interface FooterCopy {
   accessibility: string;
   rights: string;
   socialLabel: string;
+  brandLine: string;
   madeBy: string;
 }
 

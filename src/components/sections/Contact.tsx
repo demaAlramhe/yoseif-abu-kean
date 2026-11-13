@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/context/LanguageProvider";
-import { siteConfig, whatsappUrl } from "@/lib/siteConfig";
+import { CONTACT, siteConfig, whatsappUrl } from "@/lib/siteConfig";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Contact() {
@@ -63,15 +63,21 @@ export function Contact() {
                 </li>
                 <li>
                   <a
-                    href={whatsappUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={siteConfig.landlineHref}
                     className="transition-colors hover:text-gold-dark"
                   >
                     <span className="me-2 text-gold" aria-hidden>
-                      📞
+                      ☎️
                     </span>
-                    {t.contact.phone}
+                    <span dir="ltr">{CONTACT.landline}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href={siteConfig.phoneHref} className="transition-colors hover:text-gold-dark">
+                    <span className="me-2 text-gold" aria-hidden>
+                      📱
+                    </span>
+                    <span dir="ltr">{CONTACT.mobile}</span>
                   </a>
                 </li>
                 <li>
@@ -82,7 +88,7 @@ export function Contact() {
                     <span className="me-2 text-gold" aria-hidden>
                       ✉️
                     </span>
-                    {t.contact.email}
+                    {CONTACT.email}
                   </a>
                 </li>
               </ul>

@@ -3,6 +3,7 @@
 import { LanguageProvider, useLanguage } from "@/context/LanguageProvider";
 import { Header } from "@/components/layout/Header";
 import { AccessibilityWidget } from "@/components/accessibility/AccessibilityWidget";
+import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Brand } from "@/components/sections/Brand";
@@ -37,6 +38,7 @@ function Shell({ children }: { children: ReactNode }) {
       <Header />
       <div id="main-content">{children}</div>
       <AccessibilityWidget />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -1,8 +1,11 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageProvider";
-import { siteConfig } from "@/lib/siteConfig";
+import { CONTACT, siteConfig } from "@/lib/siteConfig";
 import { LogoChip } from "@/components/ui/LogoBadge";
+import { SocialIcon, socialAriaLabel, type SocialNetwork } from "@/components/ui/SocialIcons";
+
+const NETWORKS: SocialNetwork[] = ["facebook", "instagram", "tiktok"];
 
 const navItems = [
   { key: "home" as const, href: `#${siteConfig.sections.home}` },
@@ -13,12 +16,12 @@ const navItems = [
 ];
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-gold/20 bg-navy-deep text-cream">
-      <div className="container-wide section-padding !py-12">
+      <div className="container-wide section-padding !pt-12 !pb-44 sm:!pb-12">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-start">
             <div className="flex items-center gap-3">
@@ -30,6 +33,27 @@ export function Footer() {
                 </p>
               </div>
             </div>
+            <ul className="space-y-1 text-sm text-cream/70">
+              <li>
+                <a
+                  href={siteConfig.landlineHref}
+                  className="transition-colors hover:text-gold"
+                >
+                  <span className="me-1.5" aria-hidden>
+                    ☎️
+                  </span>
+                  <span dir="ltr">{CONTACT.landline}</span>
+                </a>
+              </li>
+              <li>
+                <a href={siteConfig.phoneHref} className="transition-colors hover:text-gold">
+                  <span className="me-1.5" aria-hidden>
+                    📱
+                  </span>
+                  <span dir="ltr">{CONTACT.mobile}</span>
+                </a>
+              </li>
+            </ul>
           </div>
 
           <nav
@@ -52,20 +76,31 @@ export function Footer() {
               {t.footer.socialLabel}
             </p>
             <div className="flex justify-center gap-3 md:justify-start">
-              {(
-                [
-                  ["facebook", siteConfig.social.facebook],
-                  ["instagram", siteConfig.social.instagram],
-                  ["linkedin", siteConfig.social.linkedin],
-                ] as const
-              ).map(([name, href]) => (
+              {NETWORKS.map((name) => (
                 <a
                   key={name}
-                  href={href}
-                  aria-label={name}
-                  className="flex h-9 w-9 items-center justify-center border border-gold/30 text-xs uppercase text-gold/80 transition hover:border-gold hover:text-gold"
+                  href={CONTACT.social.alyosef[name]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={socialAriaLabel(locale, "Al-Yosef Global", name)}
+                  className="flex h-9 w-9 items-center justify-center border border-gold/30 text-gold/80 transition hover:border-gold hover:text-gold"
                 >
-                  {name.slice(0, 2)}
+                  <SocialIcon name={name} />
+                </a>
+              ))}
+            </div>
+            <p className="mb-2 mt-4 text-xs text-cream/50">{t.footer.brandLine}</p>
+            <div className="flex justify-center gap-2 md:justify-start">
+              {NETWORKS.map((name) => (
+                <a
+                  key={name}
+                  href={CONTACT.social.vevia[name]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={socialAriaLabel(locale, "VEVIA", name)}
+                  className="flex h-7 w-7 items-center justify-center border border-gold/25 text-gold/70 transition hover:border-gold hover:text-gold"
+                >
+                  <SocialIcon name={name} className="h-3.5 w-3.5" />
                 </a>
               ))}
             </div>

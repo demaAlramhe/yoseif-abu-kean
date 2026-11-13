@@ -1,16 +1,70 @@
 /**
+ * Single source for company contact details, phones, and social profiles.
+ * Section components read from here — do not hardcode these values elsewhere.
+ */
+export const CONTACT = {
+  company: "Al-Yosef Global Ltd",
+  email: "info@al-yosefglobal.com",
+  mobile: "052-936-7090",
+  mobileIntl: "+972529367090",
+  landline: "08-6600049",
+  landlineIntl: "+97286600049",
+  whatsapp: "https://wa.me/972529367090",
+  address: "הקיימות 3, פארק עידן הנגב",
+  social: {
+    alyosef: {
+      facebook: "https://www.facebook.com/profile.php?id=61596405845029",
+      instagram: "https://www.instagram.com/alyosef.global",
+      tiktok: "https://www.tiktok.com/@alyosef.global",
+    },
+    vevia: {
+      facebook: "https://www.facebook.com/profile.php?id=61596596246182",
+      instagram: "https://www.instagram.com/vevia.il",
+      tiktok: "https://www.tiktok.com/@vevia.il",
+    },
+  },
+} as const;
+
+export const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: CONTACT.company,
+  url: "https://al-yosefglobal.com",
+  email: CONTACT.email,
+  telephone: [CONTACT.landlineIntl, CONTACT.mobileIntl],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "הקיימות 3",
+    addressLocality: "פארק עידן הנגב",
+    addressCountry: "IL",
+  },
+  brand: { "@type": "Brand", name: "VEVIA" },
+  sameAs: [
+    CONTACT.social.alyosef.facebook,
+    CONTACT.social.alyosef.instagram,
+    CONTACT.social.alyosef.tiktok,
+    CONTACT.social.vevia.facebook,
+    CONTACT.social.vevia.instagram,
+    CONTACT.social.vevia.tiktok,
+  ],
+} as const;
+
+/**
  * Central site config — swap assets / map embed / contact details here
  * without touching section components.
  */
 export const siteConfig = {
-  companyLegalName: "Al-Yosef Global Ltd",
+  companyLegalName: CONTACT.company,
   brandName: "VEVIA",
-  phone: "052-936-7090",
-  phoneHref: "tel:+972529367090",
-  email: "info@al-yosefglobal.com",
-  emailHref: "mailto:info@al-yosefglobal.com",
+  phone: CONTACT.mobile,
+  phoneHref: `tel:${CONTACT.mobileIntl}`,
+  landline: CONTACT.landline,
+  landlineHref: `tel:${CONTACT.landlineIntl}`,
+  email: CONTACT.email,
+  emailHref: `mailto:${CONTACT.email}`,
   /** WhatsApp business number in international format (no +) */
-  whatsappNumber: "972529367090",
+  whatsappNumber: CONTACT.mobileIntl.slice(1),
+  whatsapp: CONTACT.whatsapp,
   logo: {
     /**
      * Primary color logo (navy + gold wordmark, transparent PNG).
@@ -39,12 +93,7 @@ export const siteConfig = {
    */
   mapEmbedUrl:
     "https://maps.google.com/maps?q=Idan%20HaNegev%20Industrial%20Park&t=&z=14&ie=UTF8&iwloc=&output=embed",
-  social: {
-    /** TODO: replace with real profile URLs */
-    facebook: "#",
-    instagram: "#",
-    linkedin: "#",
-  },
+  social: CONTACT.social,
   sections: {
     home: "home",
     about: "about",
@@ -62,9 +111,9 @@ export function logoSrcForSurface(surface: "light" | "dark"): string {
   return siteConfig.logo.src;
 }
 
-/** Build a wa.me deep link; optional prefilled message. */
+/** Build a wa.me deep link; optional prefilled message (URL-encoded). */
 export function whatsappUrl(message?: string): string {
-  const base = `https://wa.me/${siteConfig.whatsappNumber}`;
+  const base = CONTACT.whatsapp;
   if (!message?.trim()) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
