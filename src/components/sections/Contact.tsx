@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageProvider";
+import { trackEvent } from "@/lib/analytics";
 import { CONTACT, siteConfig, whatsappUrl } from "@/lib/siteConfig";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Contact() {
   const { t } = useLanguage();
+  const pathname = usePathname();
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,6 +38,7 @@ export function Contact() {
       `${t.contact.form.message}: ${message}`,
     ].join("\n");
 
+    trackEvent("Lead", { page: pathname });
     window.open(whatsappUrl(body), "_blank", "noopener,noreferrer");
     form.reset();
     setSubmitted(true);
@@ -64,6 +68,7 @@ export function Contact() {
                 <li>
                   <a
                     href={siteConfig.landlineHref}
+                    data-track="call"
                     className="transition-colors hover:text-gold-dark"
                   >
                     <span className="me-2 text-gold" aria-hidden>
@@ -73,7 +78,11 @@ export function Contact() {
                   </a>
                 </li>
                 <li>
-                  <a href={siteConfig.phoneHref} className="transition-colors hover:text-gold-dark">
+                  <a
+                    href={siteConfig.phoneHref}
+                    data-track="call"
+                    className="transition-colors hover:text-gold-dark"
+                  >
                     <span className="me-2 text-gold" aria-hidden>
                       📱
                     </span>

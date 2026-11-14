@@ -37,6 +37,7 @@ export function Footer() {
               <li>
                 <a
                   href={siteConfig.landlineHref}
+                  data-track="call"
                   className="transition-colors hover:text-gold"
                 >
                   <span className="me-1.5" aria-hidden>
@@ -46,7 +47,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={siteConfig.phoneHref} className="transition-colors hover:text-gold">
+                <a
+                  href={siteConfig.phoneHref}
+                  data-track="call"
+                  className="transition-colors hover:text-gold"
+                >
                   <span className="me-1.5" aria-hidden>
                     📱
                   </span>

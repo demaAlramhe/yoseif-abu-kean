@@ -96,6 +96,7 @@ export function Header() {
             href={whatsappUrl(t.contact.whatsappGreeting)}
             target="_blank"
             rel="noopener noreferrer"
+            data-track="whatsapp"
             className="btn-primary hidden whitespace-nowrap px-4 py-2 text-xs sm:inline-flex md:text-sm"
           >
             {t.nav.cta}
@@ -146,6 +147,7 @@ export function Header() {
               href={whatsappUrl(t.contact.whatsappGreeting)}
               target="_blank"
               rel="noopener noreferrer"
+              data-track="whatsapp"
               className="btn-primary mt-2 w-full max-w-xs"
               onClick={() => setMenuOpen(false)}
             >

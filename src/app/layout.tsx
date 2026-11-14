@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Assistant, Cairo } from "next/font/google";
+import { Pixels } from "@/components/analytics/Pixels";
 import { organizationJsonLd } from "@/lib/siteConfig";
 import "./globals.css";
 
@@ -50,7 +51,10 @@ export default function RootLayout({
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <Pixels />
+      </body>
     </html>
   );
 }

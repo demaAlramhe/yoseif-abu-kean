@@ -12,6 +12,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t.contact.whatsappOrderLabel}
+      data-track="whatsapp"
       className="print:hidden fixed bottom-24 left-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366] sm:bottom-28 sm:left-6"
     >
       <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden>
