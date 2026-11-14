@@ -21,6 +21,10 @@ declare global {
     fbq?: FacebookPixel;
     _fbq?: FacebookPixel;
     ttq?: TikTokPixel;
+    /** Set when the Meta base snippet has initialized and sent its first PageView. */
+    __fbqInit?: boolean;
+    /** Set when the TikTok base snippet has loaded and sent its first page view. */
+    __ttqInit?: boolean;
   }
 }
 
